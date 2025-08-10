@@ -8,9 +8,17 @@ public class Boleto {
     private EstadoBoleto estado;
 
     public Boleto(String id, TipoBoleto tipo, double precio) {
+        validarPrecio(precio);
+        this.id = id;
         this.tipo = tipo;
         this.precio = precio;
         this.estado = EstadoBoleto.DISPONIBLE;
+    }
+
+    private void validarPrecio(double precio) {
+        if (precio <= 0 || precio > 1000) {
+            throw new IllegalArgumentException("Precio no válido");
+        }
     }
 
     public EstadoBoleto getEstado(){
@@ -26,4 +34,13 @@ public class Boleto {
         return precio;
     }
 
+    @Override
+    public String toString() {
+        return "Boleto{" +
+                "id='" + id + '\'' +
+                ", tipo=" + tipo +
+                ", precio=" + precio +
+                ", estado=" + estado +
+                '}';
+    }
 }
