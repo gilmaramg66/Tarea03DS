@@ -16,6 +16,9 @@ public class Cliente extends Usuario {
 
     public Cliente(String nombre, String correo, String telefono) {
         super(nombre, correo, telefono);
+        if (nombre == null) throw new IllegalArgumentException("El nombre no puede ser null");
+        if (correo == null) throw new IllegalArgumentException("El correo no puede ser null");
+        if (telefono == null) throw new IllegalArgumentException("El teléfono no puede ser null");
         this.boletosReservados = new ArrayList<>();
         this.boletosComprados = new ArrayList<>();
         this.incidentes = new ArrayList<>();
@@ -116,5 +119,17 @@ public class Cliente extends Usuario {
 
     public void setCanales(List<CanalNotificacion> canales){
         this.canales = canales;
+    }
+
+    public MetodoPago getMetodoPago() {
+        return metodoPago;
+    }
+
+    public List<CanalNotificacion> getCanales() {
+        return canales;
+    }
+
+    public void setBoletosComprados(List<Boleto> boletosComprados) {
+        this.boletosComprados = boletosComprados;
     }
 }
