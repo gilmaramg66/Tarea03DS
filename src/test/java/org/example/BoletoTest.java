@@ -19,6 +19,7 @@ public class BoletoTest {
     public BoletoTest() {
     }
 
+
     @Test
     public void testToString() {
         Boleto instance = new Boleto(id, tipo, precio);
@@ -45,7 +46,8 @@ public class BoletoTest {
     @ParameterizedTest
     @CsvSource({
         "INVALIDO",
-        "HOLA"
+        "HOLA",
+        "null"
     })
     public void testTipoNoValido(String tipo) {
         System.out.println("testTipoNoValido");

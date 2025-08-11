@@ -1,7 +1,5 @@
 package org.example.ChainOfResponsability;
 
-import org.example.FactoryMethod.Usuario;
-
 public class AgenteSoporte extends SoporteHandler {
     String correo;
     String nombre;
