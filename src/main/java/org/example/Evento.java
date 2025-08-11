@@ -7,9 +7,10 @@ import org.example.FactoryMethod.Organizador;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import org.example.Observer.Observable;
 import java.util.stream.Collectors;
 
-public class Evento {
+public class Evento extends Observable<Evento> {
     private String nombre;
     private String artista;
     private String tipoMusica;
@@ -34,6 +35,10 @@ public class Evento {
         return boletos.stream()
                 .filter(b -> b.getEstado() == EstadoBoleto.DISPONIBLE)
                 .collect(Collectors.toList());
+    }
+
+    public void cancelarEvento() {
+        // Lógica para cancelar el evento
     }
 
     public String getNombre(){
@@ -64,9 +69,11 @@ public class Evento {
     }
 
     public void setUbicaciones(List<Ubicacion> ubicaciones) {
+        notifyListeners(this);
         this.ubicaciones = ubicaciones;
     }
     public void setFechas(List<LocalDate> fechas) {
+        notifyListeners(this);
         this.fechas = fechas;
     }
     public void setBoletos(List<Boleto> boletos) {

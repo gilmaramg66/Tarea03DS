@@ -64,6 +64,11 @@ public class Cliente extends Usuario {
 
         // Reservar los boletos
         for (Boleto b : disponibles) {
+            b.addListener((boleto) -> {
+                // Notificar al cliente sobre el cambio de estado del boleto
+                recibirNotificacion("El estado de su boleto con ID " + boleto.getId() + " ha cambiado a " + boleto.getEstado());
+            });
+
             b.setEstado(EstadoBoleto.RESERVADO);
             boletosReservados.add(b);
         }
@@ -75,6 +80,7 @@ public class Cliente extends Usuario {
     }
 
     public void realizarPago(double monto) {
+        recibirNotificacion("Se ha realizado un pago de " + monto);
         metodoPago.pagar(monto);
     }
 
