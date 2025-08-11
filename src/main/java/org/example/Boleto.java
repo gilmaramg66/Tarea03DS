@@ -1,7 +1,8 @@
 package org.example;
 
+import org.example.Observer.Observable;
 
-public class Boleto {
+public class Boleto extends Observable<Boleto> {
     private String id;
     private TipoBoleto tipo; // General, VIP, Asiento reservado
     private double precio;
@@ -21,6 +22,10 @@ public class Boleto {
         }
     }
 
+    public String getId() {
+        return id;
+    }
+
     public EstadoBoleto getEstado(){
         return estado;
     }
@@ -29,6 +34,7 @@ public class Boleto {
     }
     public void setEstado(EstadoBoleto estadoBoleto) {
         this.estado = estadoBoleto;
+        notifyListeners(this);
     }
     public double getPrecio(){
         return precio;
